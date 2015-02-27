@@ -5,8 +5,9 @@ public class GameStateManager {
 	private GameState[] gameStates;
 	private int currentState;
 	
-	public static final int NUMGAMESTATES = 0;
+	public static final int NUMGAMESTATES = 2;
 	public static final int MENUSTATE = 0;
+	public static final int LEVEL1STATE = 1;
 	
 	public GameStateManager() {
 		

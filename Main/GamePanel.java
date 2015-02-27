@@ -7,15 +7,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import GameState.GameStateManager;
 
-public class GamePanel extends JFrame implements Runnable, KeyListener {
+@SuppressWarnings("serial")
+public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 	// dimensions
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 720;
+	public static final int WIDTH = 640; // 1280 / 2
+	public static final int HEIGHT = 360; // 720 / 2
 	public static final int SCALE = 2;
 	
 	// game thread
@@ -33,7 +34,8 @@ public class GamePanel extends JFrame implements Runnable, KeyListener {
 		
 	public GamePanel() {
 		super();
-		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));setFocusable(true);
+		setPreferredSize(new Dimension(WIDTH * SCALE, HEIGHT * SCALE));
+		setFocusable(true);
 		requestFocus();
 	}
 	
