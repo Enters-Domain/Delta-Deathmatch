@@ -5,11 +5,11 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
-//import TileMap.Background;
+import TileMap.Background;
 
 public class MenuState extends GameState {
 	
-	//private Background bg;
+	private Background bg;
 	
 	private int currentChoice = 0;
 	private String[] options = {
@@ -29,7 +29,7 @@ public class MenuState extends GameState {
 		
 		try {
 			
-			//bg = new Background("/Backgrounds/menubg.gif", 1);
+			//bg = new Background("/test.jpg", 1);
 			//bg.setVector(-0.1, 0);
 			
 			titleColor = new Color(128, 0, 0);
@@ -50,7 +50,6 @@ public class MenuState extends GameState {
 public void init() {}
 	
 	public void update() {
-		//bg.update();
 	}
 	
 	public void draw(Graphics2D g) {
