@@ -1,5 +1,7 @@
 package GameState;
 
+import Audio.AudioPlayer;
+
 public class GameStateManager {
 	
 	private GameState[] gameStates;
@@ -11,6 +13,8 @@ public class GameStateManager {
 	
 	public GameStateManager() {
 		
+		AudioPlayer.init();
+		
 		gameStates = new GameState[NUMGAMESTATES];
 		
 		currentState = MENUSTATE;
@@ -19,8 +23,12 @@ public class GameStateManager {
 	}
 	
 	private void loadState(int state) {
-		if(state == MENUSTATE)
+		if(state == MENUSTATE){
 			gameStates[state] = new MenuState(this);
+		}
+		if(state == LEVEL1STATE){
+			gameStates[state] = new Level1State(this);
+		}
 	}
 	
 	private void unloadState(int state) {
@@ -31,7 +39,6 @@ public class GameStateManager {
 		unloadState(currentState);
 		currentState = state;
 		loadState(currentState);
-		//gameStates[currentState].init();
 	}
 	
 	public void update() {

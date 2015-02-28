@@ -18,9 +18,6 @@ public class MenuState extends GameState {
 		"Quit"
 	};
 	
-	private Color titleColor;
-	private Font titleFont;
-	
 	private Font font;
 	
 	public MenuState(GameStateManager gsm) {
@@ -29,14 +26,9 @@ public class MenuState extends GameState {
 		
 		try {
 			
-			//bg = new Background("/test.jpg", 1);
-			//bg.setVector(-0.1, 0);
-			
-			titleColor = new Color(128, 0, 0);
-			titleFont = new Font(
-					"Century Gothic",
-					Font.PLAIN,
-					40);
+			bg = new Background("/Backgrounds/title.png", 0);
+			bg.setImagePosition(0,-60);
+			bg.setVector(0, 0);
 			
 			font = new Font("Arial", Font.PLAIN, 20);
 			
@@ -47,42 +39,31 @@ public class MenuState extends GameState {
 		
 	}
 	
-public void init() {}
+	public void init() {}
 	
-	public void update() {
-	}
+	public void update() {}
 	
 	public void draw(Graphics2D g) {
 		
 		// draw bg
-		//bg.draw(g);
-		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, 1280, 720);
-		
-		
-		// draw title
-		g.setColor(titleColor);
-		g.setFont(titleFont);
-		g.drawString("Delta Deathmatch", 150, 85);
+		bg.draw(g);
 		
 		// draw menu options
 		g.setFont(font);
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
-				g.setColor(Color.BLACK);
+				g.setColor(Color.BLUE);
 			}
 			else {
 				g.setColor(Color.RED);
 			}
-			//g.drawString(options[i], 145, 140 + i * 15);
-			g.drawString(options[i], 260, 200 + i * 22);
+			g.drawString(options[i], 300, 250 + i * 22);
 		}
 		
 	}
-	
 	private void select() {
 		if(currentChoice == 0) {
-			//gsm.setState(GameStateManager.LEVEL1STATE);
+			gsm.setState(GameStateManager.LEVEL1STATE);
 		}
 		if(currentChoice == 1) {
 			// help
@@ -110,5 +91,4 @@ public void init() {}
 		}
 	}
 	public void keyReleased(int k) {}
-	
 }

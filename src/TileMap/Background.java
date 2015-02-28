@@ -35,6 +35,11 @@ public class Background {
 		this.y = (y * moveScale) % GamePanel.HEIGHT;
 	}
 	
+	public void setImagePosition(double x, double y) {
+		this.x = x;
+		this.y = y;
+	}
+	
 	public void setVector(double dx, double dy) {
 		this.dx = dx;
 		this.dy = dy;
