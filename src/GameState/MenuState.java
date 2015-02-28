@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.io.InputStream;
 
 import TileMap.Background;
 
@@ -30,9 +31,10 @@ public class MenuState extends GameState {
 			bg = new Background("/Backgrounds/titlebackground.jpg", 0);
 			bg.setImagePosition(0, 0);
 			bg.setVector(0, 0);
-			
-			font = new Font("M04_FATAL FURY", Font.PLAIN, 15);
-			
+
+			InputStream fontFile = Thread.currentThread().getContextClassLoader().getResourceAsStream("/Fonts/m04.ttf");
+			font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
 		}
 		catch(Exception e) {
 			e.printStackTrace();
