@@ -15,6 +15,7 @@ public class MenuState extends GameState {
 	private String[] options = {
 		"Start",
 		"Help",
+		"Options",
 		"Quit"
 	};
 	
@@ -26,11 +27,11 @@ public class MenuState extends GameState {
 		
 		try {
 			
-			bg = new Background("/Backgrounds/title.png", 0);
-			bg.setImagePosition(0,-60);
+			bg = new Background("/Backgrounds/titlebackground.jpg", 0);
+			bg.setImagePosition(0, 0);
 			bg.setVector(0, 0);
 			
-			font = new Font("Arial", Font.PLAIN, 20);
+			font = new Font("M04_FATAL FURY", Font.PLAIN, 15);
 			
 		}
 		catch(Exception e) {
@@ -52,12 +53,12 @@ public class MenuState extends GameState {
 		g.setFont(font);
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
-				g.setColor(Color.BLUE);
+				g.setColor(Color.CYAN);
 			}
 			else {
-				g.setColor(Color.RED);
+				g.setColor(Color.WHITE);
 			}
-			g.drawString(options[i], 300, 250 + i * 22);
+			g.drawString(options[i], 280, 250 + i * 22);
 		}
 		
 	}

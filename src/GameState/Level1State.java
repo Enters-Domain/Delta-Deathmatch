@@ -34,7 +34,7 @@ public class Level1State extends GameState {
 		tileMap.setPosition(0, 0);
 		tileMap.setTween(1);
 		
-		bg = new Background("/Backgrounds/Background Idea.jpg", 0);
+		bg = new Background("/Backgrounds/background640x360.jpg", 0);
 		
 		//player = new Player(tileMap);
 		//player.setPosition(100, 100);
