@@ -18,7 +18,7 @@ public class Level1State extends GameState {
 	
 	//private HUD hud;
 	
-	private AudioPlayer bgMusic;
+	//private AudioPlayer bgMusic;
 	
 	public Level1State(GameStateManager gsm) {
 		this.gsm = gsm;
