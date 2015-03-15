@@ -15,9 +15,8 @@ import GameState.GameStateManager;
 public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 	// dimensions
-	public static final int HEIGHT = 640; // 1280 / 2
-	public static final int WIDTH = 360; // 720 / 2
-	public static final int SCALE = 2;
+	public static final int HEIGHT = 1280; // 640 * 2
+	public static final int WIDTH = 720; // 360 / 2
 	
 	// game thread
 	private Thread thread;
@@ -34,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		
 	public GamePanel() {
 		super();
-		setPreferredSize(new Dimension(HEIGHT * SCALE, WIDTH * SCALE));
+		setPreferredSize(new Dimension(HEIGHT, WIDTH));
 		setFocusable(true);
 		requestFocus();
 	}
@@ -50,10 +49,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	
 	private void init() {
 		
-		image = new BufferedImage(
-					HEIGHT, WIDTH,
-					BufferedImage.TYPE_INT_RGB
-				);
+		image = new BufferedImage(HEIGHT, WIDTH, BufferedImage.TYPE_INT_RGB);
 		g = (Graphics2D) image.getGraphics();
 		
 		running = true;
@@ -102,7 +98,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	
 	private void drawToScreen() {
 		Graphics g2 = getGraphics();
-		g2.drawImage(image, 0, 0, HEIGHT * SCALE, WIDTH * SCALE, null);
+		g2.drawImage(image, 0, 0, HEIGHT, WIDTH, null);
 		g2.dispose();
 	}
 	

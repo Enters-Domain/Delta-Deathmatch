@@ -1,10 +1,10 @@
 package GameState;
 
-
 import TileMap.*;
 import Audio.AudioPlayer;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Level1State extends GameState {
 	
@@ -18,7 +18,7 @@ public class Level1State extends GameState {
 	
 	//private HUD hud;
 	
-	private AudioPlayer bgMusic;
+	//private AudioPlayer bgMusic;
 	
 	public Level1State(GameStateManager gsm) {
 		this.gsm = gsm;
@@ -28,13 +28,14 @@ public class Level1State extends GameState {
 	public void init() {
 		
 		// loading
-		tileMap = new TileMap(30);
-		tileMap.loadTiles("/Tilesets/testtileset1.gif");
-		tileMap.loadMap("/Maps/level1.map");
+		tileMap = new TileMap(29);
+		tileMap.loadTiles("/Tilesets/maintileset.png");
+		tileMap.loadMap("/Maps/testing.map");
 		tileMap.setPosition(0, 0);
+		tileMap.setMapPosition(0, 87); // 29 (tile height) * 3
 		tileMap.setTween(1);
 		
-		bg = new Background("/Backgrounds/background640x360.jpg", 0);
+		bg = new Background("/Backgrounds/backgroundclean.png", 0);
 		
 		//player = new Player(tileMap);
 		//player.setPosition(100, 100);
@@ -139,9 +140,6 @@ public class Level1State extends GameState {
 		if(k == KeyEvent.VK_UP) player.setUp(true);
 		if(k == KeyEvent.VK_DOWN) player.setDown(true);
 		if(k == KeyEvent.VK_W) player.setJumping(true);
-		if(k == KeyEvent.VK_E) player.setGliding(true);
-		if(k == KeyEvent.VK_R) player.setScratching();
-		if(k == KeyEvent.VK_F) player.setFiring();
 		*/
 	}
 	
@@ -152,7 +150,6 @@ public class Level1State extends GameState {
 		if(k == KeyEvent.VK_UP) player.setUp(false);
 		if(k == KeyEvent.VK_DOWN) player.setDown(false);
 		if(k == KeyEvent.VK_W) player.setJumping(false);
-		if(k == KeyEvent.VK_E) player.setGliding(false);
 		*/
 	}
 	

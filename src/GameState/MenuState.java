@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
-import java.io.InputStream;
 
 import TileMap.Background;
 
@@ -21,6 +20,7 @@ public class MenuState extends GameState {
 	};
 	
 	private Font font;
+	private Color fontColour;
 	
 	public MenuState(GameStateManager gsm) {
 		
@@ -31,10 +31,10 @@ public class MenuState extends GameState {
 			bg = new Background("/Backgrounds/titlebackground.jpg", 0);
 			bg.setImagePosition(0, 0);
 			bg.setVector(0, 0);
-
-			InputStream fontFile = Thread.currentThread().getContextClassLoader().getResourceAsStream("/Fonts/m04.ttf");
-			font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-
+			
+			font = new Font("M04_FATAL FURY", Font.PLAIN, 25);
+			// R G B
+			fontColour = new Color(57,142,240);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -55,12 +55,12 @@ public class MenuState extends GameState {
 		g.setFont(font);
 		for(int i = 0; i < options.length; i++) {
 			if(i == currentChoice) {
-				g.setColor(Color.CYAN);
+				g.setColor(fontColour);
 			}
 			else {
 				g.setColor(Color.WHITE);
 			}
-			g.drawString(options[i], 280, 250 + i * 22);
+			g.drawString(options[i], 580, 450 + i * 40);
 		}
 		
 	}
@@ -72,6 +72,9 @@ public class MenuState extends GameState {
 			// help
 		}
 		if(currentChoice == 2) {
+			gsm.setState(GameStateManager.OPTIONSSTATE);
+		}
+		if(currentChoice == 3) {
 			System.exit(0);
 		}
 	}
