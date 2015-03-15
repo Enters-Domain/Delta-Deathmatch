@@ -10,13 +10,14 @@ import java.awt.image.BufferedImage;
 import javax.swing.JPanel;
 
 import GameState.GameStateManager;
+import Handlers.Keys;
 
 @SuppressWarnings("serial")
 public class GamePanel extends JPanel implements Runnable, KeyListener {
 
 	// dimensions
 	public static final int HEIGHT = 1280; // 640 * 2
-	public static final int WIDTH = 720; // 360 / 2
+	public static final int WIDTH = 720; // 360 * 2
 	
 	// game thread
 	private Thread thread;
@@ -91,6 +92,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	
 	private void update() {
 		gsm.update();
+		Keys.update();
 	}
 	private void draw() {
 		gsm.draw(g);
@@ -105,9 +107,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	public void keyTyped(KeyEvent key) {}
 	
 	public void keyPressed(KeyEvent key) {
-		gsm.keyPressed(key.getKeyCode());
+		Keys.keySet(key.getKeyCode(), true);
 	}
+	
 	public void keyReleased(KeyEvent key) {
-		gsm.keyReleased(key.getKeyCode());
+		Keys.keySet(key.getKeyCode(), false);
 	}
 }

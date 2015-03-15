@@ -1,15 +1,18 @@
 package GameState;
 
+
 import TileMap.*;
 import Audio.AudioPlayer;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class Level1State extends GameState {
 	
 	private TileMap tileMap;
 	private Background bg;
+	
+	private double cameraX = 0;
+	private double cameraY = 0;
 	
 	//private Player player;
 	
@@ -18,10 +21,10 @@ public class Level1State extends GameState {
 	
 	//private HUD hud;
 	
-	//private AudioPlayer bgMusic;
+	private AudioPlayer bgMusic;
 	
 	public Level1State(GameStateManager gsm) {
-		this.gsm = gsm;
+		super(gsm);
 		init();
 	}
 	
@@ -40,36 +43,17 @@ public class Level1State extends GameState {
 		//player = new Player(tileMap);
 		//player.setPosition(100, 100);
 		
-		populateEnemies();
-		
-		//explosions = new ArrayList<Explosion>();
-		
 		//hud = new HUD(player);
-	}
-	
-	private void populateEnemies() {
-		//enemies = new ArrayList<Enemy>();
-		/* Example
-		Slugger s;
-		Point[] points = new Point[] {
-			new Point(860, 200),
-			new Point(1525, 200),
-			new Point(1680, 200),
-			new Point(1800, 200)
-		};
-		for(int i = 0; i < points.length; i++) {
-			s = new Slugger(tileMap);
-			s.setPosition(points[i].x, points[i].y);
-			enemies.add(s);
-		}
-		*/
 	}
 	
 	public void update() {
 		
 		// update player
 		//player.update();
-		//tileMap.setPosition(GamePanel.WIDTH / 2 - player.getx(),GamePanel.HEIGHT / 2 - player.gety());
+		//tileMap.setPosition(
+				//GamePanel.WIDTH / 2 - player.getx(),
+				//GamePanel.HEIGHT / 2 - player.gety()
+				//);
 		
 		// set background
 		bg.setPosition(tileMap.getx(), tileMap.gety());
