@@ -14,7 +14,7 @@ public class OptionsState extends GameState {
 	private Color fontColour;
 	
 	public OptionsState(GameStateManager gsm){
-		super(gsm);
+		this.gsm = gsm;
 		init();
 	}
 	

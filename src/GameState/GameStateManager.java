@@ -56,4 +56,12 @@ public class GameStateManager {
 			gameStates[currentState].draw(g);
 		} catch(Exception e) {}
 	}
+	
+	public void keyPressed(int k) {
+		gameStates[currentState].keyPressed(k);
+	}
+	
+	public void keyReleased(int k) {
+		gameStates[currentState].keyReleased(k);
+	}
 }

@@ -3,8 +3,8 @@ package GameState;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
-import Handlers.Keys;
 import TileMap.Background;
 
 public class MenuState extends GameState {
@@ -24,7 +24,7 @@ public class MenuState extends GameState {
 	
 	public MenuState(GameStateManager gsm) {
 		
-		super(gsm);
+		this.gsm = gsm;
 		
 		try {
 			
@@ -44,11 +44,7 @@ public class MenuState extends GameState {
 	
 	public void init() {}
 	
-	public void update() {
-		
-		// check keys
-		handleInput();
-	}
+	public void update() {}
 	
 	public void draw(Graphics2D g) {
 		
@@ -82,25 +78,24 @@ public class MenuState extends GameState {
 			System.exit(0);
 		}
 	}
-	
-	public void handleInput() {
-		if(Keys.isPressed(Keys.ENTER)) select();
-		
-		if(Keys.isPressed(Keys.UP)) {
-			if(currentChoice > 0) {
-				currentChoice--;
-				if(currentChoice == -1) {
-					currentChoice = options.length - 1;
-				}
+
+	public void keyPressed(int k) {
+		if(k == KeyEvent.VK_ENTER){
+			select();
+		}
+		if(k == KeyEvent.VK_UP) {
+			currentChoice--;
+			if(currentChoice == -1) {
+				currentChoice = options.length - 1;
 			}
 		}
-		if(Keys.isPressed(Keys.DOWN)) {
-			if(currentChoice < options.length - 1) {
-				currentChoice++;
-				if(currentChoice == options.length) {
-					currentChoice = 0;
-				}
+		if(k == KeyEvent.VK_DOWN) {
+			currentChoice++;
+			if(currentChoice == options.length) {
+				currentChoice = 0;
 			}
 		}
 	}
+	public void keyReleased(int k) {}
+	
 }

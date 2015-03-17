@@ -1,20 +1,21 @@
 package GameState;
 
-
+import Main.GamePanel;
 import TileMap.*;
 import Audio.AudioPlayer;
+import Entity.Camera;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class Level1State extends GameState {
 	
 	private TileMap tileMap;
 	private Background bg;
 	
-	private double cameraX = 0;
-	private double cameraY = 0;
-	
 	//private Player player;
+	
+	private Camera camera;
 	
 	//private ArrayList<Enemy> enemies;
 	//private ArrayList<Explosion> explosions;
@@ -24,7 +25,7 @@ public class Level1State extends GameState {
 	private AudioPlayer bgMusic;
 	
 	public Level1State(GameStateManager gsm) {
-		super(gsm);
+		this.gsm = gsm;
 		init();
 	}
 	
@@ -43,6 +44,9 @@ public class Level1State extends GameState {
 		//player = new Player(tileMap);
 		//player.setPosition(100, 100);
 		
+		camera = new Camera(tileMap);
+		camera.setPosition(GamePanel.WIDTH / 2, 100);
+		
 		//hud = new HUD(player);
 	}
 	
@@ -54,6 +58,9 @@ public class Level1State extends GameState {
 				//GamePanel.WIDTH / 2 - player.getx(),
 				//GamePanel.HEIGHT / 2 - player.gety()
 				//);
+		
+		camera.update();
+		tileMap.setPosition(GamePanel.WIDTH / 2 - camera.getx(), GamePanel.HEIGHT / 2 - camera.gety());
 		
 		// set background
 		bg.setPosition(tileMap.getx(), tileMap.gety());
@@ -118,6 +125,9 @@ public class Level1State extends GameState {
 	}
 	
 	public void keyPressed(int k) {
+		
+		if(k == KeyEvent.VK_LEFT) camera.setLeft(true);
+		if(k == KeyEvent.VK_RIGHT) camera.setRight(true);
 		/*
 		if(k == KeyEvent.VK_LEFT) player.setLeft(true);
 		if(k == KeyEvent.VK_RIGHT) player.setRight(true);
@@ -128,6 +138,9 @@ public class Level1State extends GameState {
 	}
 	
 	public void keyReleased(int k) {
+		
+		if(k == KeyEvent.VK_LEFT) camera.setLeft(false);
+		if(k == KeyEvent.VK_RIGHT) camera.setRight(false);
 		/*
 		if(k == KeyEvent.VK_LEFT) player.setLeft(false);
 		if(k == KeyEvent.VK_RIGHT) player.setRight(false);
